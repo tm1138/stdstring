@@ -33,7 +33,10 @@ stdstring::stdstring (const char *temp)
 
 stdstring& stdstring::operator+ (const stdstring &temp)
 {
-    int newCapacity = this->icapacity + temp.size() + 1;
+    std::cout << this->data() << '\n';
+    std::cout << temp.data() << '\n';
+    std::cout << '\n';
+    int newCapacity = this->size() + temp.size() + 1;
     char *newstring = new char[newCapacity];
     snprintf (newstring , newCapacity, "%s%s", this->data(), temp.data());
     stdstring *result = new stdstring (newstring);
@@ -47,6 +50,24 @@ stdstring& stdstring::operator= (const stdstring &temp)
     memset (istring, 0, this->icapacity);
     memcpy (istring, temp.data(), temp.size());
     return *this;
+}
+
+std::ostream& operator<< (std::ostream& out, const stdstring& temp)
+{
+    out << temp.data();
+    return out;
+}
+
+std::istream& operator>> (std::istream& in, stdstring& temp)
+{
+    char ch;
+    std::cin.get(ch);
+    std::cin.putback(ch);
+    std::streamsize length = std::cin.rdbuf()->in_avail();
+    delete(temp.istring);
+    temp.istring = new char[length + 1];
+    in >> temp.istring;
+    return in;
 }
 
 int stdstring::size() const

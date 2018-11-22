@@ -21,6 +21,6 @@ public:
     bool empty() const;
     char* data() const; //
 
-    friend std::ostream& operator<< (std::ostream&, const stdstring&);
-    friend std::istream& operator>> (std::istream&, const stdstring&);
+    friend std::ostream& operator<<(std::ostream&, const stdstring&); //
+    friend std::istream& operator>>(std::istream&, stdstring&);
 };

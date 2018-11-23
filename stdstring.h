@@ -2,6 +2,8 @@
 #include <string.h>
 #include <iostream>
 
+#define INITIAL_SIZE 15
+
 class stdstring
 {
     char *istring;
@@ -9,8 +11,7 @@ class stdstring
     static const int npos = -1;
 
 public:
-    stdstring(); //
-    stdstring(int); //
+    stdstring(int size = INITIAL_SIZE); //
     stdstring(const stdstring&); //
     stdstring(const char*); //
     stdstring& operator= (const stdstring&); //

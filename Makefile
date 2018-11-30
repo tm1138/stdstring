@@ -1,4 +1,4 @@
 all:
-	g++ main.cc stdstring_ctor.cc stdstring_fucntions1.cc -o test
+	g++ main.cc stdstring_ctor.cc stdstring_traits.cc stdstring_find.cc -o test
 clean:
-	rm test
+	rm -rf test

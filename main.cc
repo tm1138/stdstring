@@ -4,8 +4,14 @@
 int main(int argc, char const *argv[])
 {
     stdstring str1 ("abcdefghlmnop");
-    std::cout << '\n';
-    str1 = stdstring("abcd");
-    //stdstring str;
+    stdstring str2;
+    if (str1.empty())
+    {
+        std::cout << "str1 is empty";
+    }
+    if (str2.empty())
+    {
+        std::cout << "str2 is empty";
+    }
     return 0;
 }

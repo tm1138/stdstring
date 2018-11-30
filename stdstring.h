@@ -22,9 +22,9 @@ public:
     int find(const char*);
 
 
-    char* c_str(); //
+    char* c_str() const; //
     int size() const; //
-    bool empty() const;
+    bool empty() const; //
     char* data() const; //
 
     friend std::ostream& operator<<(std::ostream&, const stdstring&); //

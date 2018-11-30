@@ -2,7 +2,7 @@
 
 int stdstring::size() const
 {
-    return strlen(istring);
+    return length;
 }
 
 char* stdstring::data() const
@@ -10,8 +10,12 @@ char* stdstring::data() const
     return istring;
 }
 
-char* stdstring::c_str()
+char* stdstring::c_str() const
 {
     return istring;
 }
 
+bool stdstring::empty() const
+{
+    return (length>0) ? 0 : 1;
+}

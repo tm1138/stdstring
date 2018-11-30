@@ -8,6 +8,7 @@ class stdstring
 {
     char *istring;
     int icapacity;
+    int length;
     static const int npos = -1;
 
 public:
@@ -16,12 +17,16 @@ public:
     stdstring(const char*); //
     stdstring& operator= (const stdstring&); //
     stdstring& operator+ (const stdstring&); //
+    ~stdstring();
 
     int find(const char*);
+
+
+    char* c_str(); //
     int size() const; //
     bool empty() const;
     char* data() const; //
 
     friend std::ostream& operator<<(std::ostream&, const stdstring&); //
-    friend std::istream& operator>>(std::istream&, stdstring&);
+    friend std::istream& operator>>(std::istream&, stdstring&); //
 };

@@ -1,35 +1,34 @@
 #include "stdstring.h"
 
 
-stdstring::stdstring (int size)
+stdstring::stdstring (int size) : istring(new char[size]), icapacity(size), length(0)
 {
-    std::cout << "default ctor \n";
-    istring = new char (size);
-    memset(istring, 0, size);
-    icapacity = size;
+    std::cout << "default ctor\n";
+    length = 0;
+    istring[0] = '\0';
 }
 
-stdstring::stdstring (const stdstring &temp)
+stdstring::stdstring (const stdstring &temp) : istring(new char[temp.length + 1]), icapacity(temp.length + 1)
+                    , length(temp.length)
 {
-    icapacity = temp.size() + 1;
-    istring = new char[icapacity];
-    memset(istring, 0, icapacity);
+    std::cout << "copy ctor\n";
     memcpy (istring, temp.data(), temp.size());
+    istring[length] = '\0';
 }
 
 stdstring::stdstring (const char *temp)
 {
-    icapacity = strlen(temp) + 1;
+    std::cout << "param char* ctor\n";
+    length = strlen(temp);
+    icapacity = length + 1;
     istring = new char[icapacity];
-    memset(istring, 0, icapacity);
-    memcpy (istring, temp, strlen(temp));
+    memcpy (istring, temp, length);
+    istring[length] = '\0';
 }
 
 stdstring& stdstring::operator+ (const stdstring &temp)
 {
-    std::cout << data() << '\n';
-    std::cout << temp.data() << '\n';
-    std::cout << '\n';
+    std::cout << "add operator\n";
     int newCapacity = size() + temp.size() + 1;
     char *newstring = new char[newCapacity];
     snprintf (newstring , newCapacity, "%s%s", data(), temp.data());
@@ -39,7 +38,13 @@ stdstring& stdstring::operator+ (const stdstring &temp)
 
 stdstring& stdstring::operator= (const stdstring &temp)
 {
+    std::cout << "copy assign\n";
     icapacity = temp.size() + 1;
+    if (istring)
+    {
+        std::cout << data() << '\n';
+        delete istring;
+    }
     istring = new char[icapacity];
     memset (istring, 0, icapacity);
     memcpy (istring, temp.data(), temp.size());
@@ -65,12 +70,8 @@ std::istream& operator>> (std::istream& in, stdstring& temp)
     return in;
 }
 
-int stdstring::size() const
+stdstring::~stdstring()
 {
-    return strlen(istring);
-}
-
-char* stdstring::data() const
-{
-    return istring;
+    std::cout << "dtor called " << data() << '\n';
+    delete istring;
 }

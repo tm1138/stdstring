@@ -3,18 +3,9 @@
 
 int main(int argc, char const *argv[])
 {
-    stdstring str1 ("abcd");
-    stdstring str2 ("efgh");
-    std::cout << str2 << '\n';
-    std::cout << str2.size() << '\n';
-    stdstring str3(0);
-    std::cout << "Enter some string: ";
-    std::cin >> str3;
-    std::cout << str3 << '\n';
-    std::cout << str3.size() << "\n\n";
-    stdstring str(str1 + str2 + str3);
-    std::cout << str << '\n';
-    std::cout << str.size() << '\n';
-
+    stdstring str1 ("abcdefghlmnop");
+    std::cout << '\n';
+    str1 = stdstring("abcd");
+    //stdstring str;
     return 0;
 }

@@ -19,7 +19,8 @@ public:
     stdstring& operator+ (const stdstring&); //
     ~stdstring();
 
-    int find(const char*);
+    int find(const char*); //
+    int rfind(const char*);
 
 
     char* c_str() const; //
